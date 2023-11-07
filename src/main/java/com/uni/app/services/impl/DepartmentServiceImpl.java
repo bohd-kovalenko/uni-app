@@ -7,6 +7,7 @@ import com.uni.app.models.enums.Degree;
 import com.uni.app.repositories.DepartmentRepository;
 import com.uni.app.services.DepartmentService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
