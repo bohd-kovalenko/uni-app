@@ -47,7 +47,7 @@ public class DepartmentShellHandler {
   @ShellMethod(key = "Show the average salary for the department ")
   public void handleGetAverageDepartmentSalary(String departmentName) {
     if (enable) {
-      System.out.printf("The average salary for the department %s is %f",
+      System.out.printf("The average salary for the department %s is %f \n",
           departmentName,
           departmentService.findAverageSalaryByDepartmentName(departmentName));
     } else System.out.println(INFORMATION_ABOUT_TURNED_OFF_SHELL);

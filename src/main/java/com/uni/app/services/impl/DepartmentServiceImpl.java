@@ -7,6 +7,7 @@ import com.uni.app.models.enums.Degree;
 import com.uni.app.repositories.DepartmentRepository;
 import com.uni.app.services.DepartmentService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -56,9 +57,9 @@ public class DepartmentServiceImpl implements DepartmentService {
         .stream()
         .collect(Collectors.groupingBy(Lecturer::getDegree, Collectors.counting()));
     return new DepartmentStatDto(departmentName,
-        lecturersCounting.get(Degree.ASSISTANT).intValue(),
-        lecturersCounting.get(Degree.ASSOCIATE_PROFESSOR).intValue(),
-        lecturersCounting.get(Degree.PROFESSOR).intValue());
+        lecturersCounting.containsKey(Degree.ASSISTANT) ? lecturersCounting.get(Degree.ASSISTANT).intValue() : 0,
+        lecturersCounting.containsKey(Degree.ASSOCIATE_PROFESSOR) ? lecturersCounting.get(Degree.ASSOCIATE_PROFESSOR).intValue() : 0,
+        lecturersCounting.containsKey(Degree.PROFESSOR) ? lecturersCounting.get(Degree.PROFESSOR).intValue() : 0);
   }
 
   @Override

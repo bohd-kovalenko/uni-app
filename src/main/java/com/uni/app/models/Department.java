@@ -20,13 +20,13 @@ public class Department {
   @SequenceGenerator(name = "departmentSequence", sequenceName = "DEPARTMENT_SEQUENCE_PK", initialValue = 1, allocationSize = 20)
   @Column(name = "id", unique = true, updatable = false, nullable = false)
   private int id;
-  @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, mappedBy = "departments")
-  @Fetch(FetchMode.SUBSELECT)
+  @ManyToMany(fetch = FetchType.EAGER, mappedBy = "departments")
+  @Fetch(FetchMode.JOIN)
   private List<Lecturer> lecturers;
   @Column(name = "name", unique = true, nullable = false)
   private String name;
-  @ManyToOne(fetch = FetchType.LAZY)
-  @Fetch(FetchMode.SELECT)
+  @ManyToOne(fetch = FetchType.EAGER)
+  @Fetch(FetchMode.JOIN)
   @JoinColumn(name = "head_lecturer_id")
   private Lecturer headLecturer;
 }

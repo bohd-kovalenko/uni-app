@@ -22,9 +22,9 @@ public class Lecturer {
   @SequenceGenerator(name = "lecturers_seq", sequenceName = "LECTURERS_SEQUENCE_PK", initialValue = 1, allocationSize = 20)
   @Column(name = "id", nullable = false, unique = true, updatable = false)
   private int id;
-  @ManyToMany(fetch = FetchType.LAZY)
-  @Fetch(FetchMode.SUBSELECT)
-  @JoinTable(name = "departments_lecturers", joinColumns = {@JoinColumn(name = "department_id", nullable = false)}, inverseJoinColumns = {@JoinColumn(name = "lecturer_id", nullable = false)})
+  @ManyToMany(fetch = FetchType.EAGER)
+  @Fetch(FetchMode.JOIN)
+  @JoinTable(name = "departments_lecturers", inverseJoinColumns = {@JoinColumn(name = "department_id", nullable = false)}, joinColumns = {@JoinColumn(name = "lecturer_id", nullable = false)})
   private List<Department> departments;
   @Enumerated(EnumType.STRING)
   @Column(name = "degree")
