@@ -28,13 +28,13 @@ public class DepartmentShellHandler {
     } else System.out.println("Your shell interaction is already turned in");
   }
 
-  @ShellMethod(key = "Disable S/I")
+  @ShellMethod(key = "Disable S/I", value = "Disable the interaction with an application")
   public void handleDisableCommand() {
     if (enable) {
       enable = false;
       System.out.println("You successfully disabled shell interaction!");
     } else System.out.println("Your shell interaction is already turned off.");
-  }
+
 
   @ShellMethod(key = "Show count of employee for department ")
   public void handleCountDepartmentEmployeesCommand(String departmentName) {
@@ -43,7 +43,6 @@ public class DepartmentShellHandler {
           departmentService.findEmployeesCountByDepartmentName(departmentName),
           departmentName);
     } else System.out.println(INFORMATION_ABOUT_TURNED_OFF_SHELL);
-  }
 
   @ShellMethod(key = "Show the average salary for the department ")
   public void handleGetAverageDepartmentSalary(String departmentName) {
@@ -52,7 +51,6 @@ public class DepartmentShellHandler {
           departmentName,
           departmentService.findAverageSalaryByDepartmentName(departmentName));
     } else System.out.println(INFORMATION_ABOUT_TURNED_OFF_SHELL);
-  }
 
   @ShellMethod(key = "Who is head of department ")
   public void handleGetDepartmentHead(String departmentName) {
@@ -61,7 +59,6 @@ public class DepartmentShellHandler {
           departmentName,
           departmentService.findHeadLecturerByDepartmentName(departmentName).getName());
     } else System.out.println(INFORMATION_ABOUT_TURNED_OFF_SHELL);
-  }
 
   @ShellMethod(key = "Show statistics of department ")
   public void handleGetDepartmentStat(String departmentName) {
@@ -86,5 +83,4 @@ public class DepartmentShellHandler {
       departments
           .forEach(department -> System.out.println(department.getName()));
     } else System.out.println(INFORMATION_ABOUT_TURNED_OFF_SHELL);
-  }
 }
